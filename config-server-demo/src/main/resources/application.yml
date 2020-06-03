@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: core
+  profiles:
+    active: dev
+  cloud:
+    inetutils:
+      #ignored-interfaces[0]: eth0
+      #default-ip-address: 192.168.211.107
+      default-ip-address: localhost
+    config:
+      #uri: http://192.168.211.104:8888
+      name: cloud-config #对应core-dev.properties文件中core部分
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: config-server
+  main:
+    allow-bean-definition-overriding: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8084
+
